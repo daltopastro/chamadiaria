@@ -5,7 +5,12 @@ publicada e o texto dentro do app nunca divergem.
 """
 import html, pathlib, re
 
-PROJETO = pathlib.Path('/home/claude/dev/chama_diaria')
+# O projeto Flutter e a fonte da politica. Primeiro caminho: a copia do Mac,
+# que e a fonte canonica. O segundo so existia no ambiente antigo.
+PROJETO = next((c for c in (
+    pathlib.Path.home() / 'Downloads/Chama_Diaria_iPhone/chama_diaria',
+    pathlib.Path('/home/claude/dev/chama_diaria'),
+) if (c / 'lib/pages/privacy_page.dart').is_file()), pathlib.Path('.'))
 SAIDA = pathlib.Path(__file__).resolve().parent
 def _constante(nome):
     """Le uma constante de lib/config/links.dart, para a pagina publicada e o
@@ -143,7 +148,7 @@ inicio = f'''<header>{SIMBOLO}<p class="selo">Já disponível</p><h1>Chama Diár
 <div class="cartao">
 <h2 class="simples" style="margin-top:0">Contato</h2>
 <p>Dúvidas, problemas ou pedidos sobre os seus dados: escreva para <a href="mailto:{EMAIL}">{EMAIL}</a>.</p>
-<p style="margin:0"><a href="privacidade.html">Leia a política de privacidade</a></p>
+<p style="margin:0"><a href="privacidade.html">Leia a política de privacidade</a><br><a href="termos.html">Leia os termos de uso</a></p>
 </div>
 <p style="color:var(--marrom);font-size:14px">Idealização e revisão pastoral: {PASTORAL}. A Chama Diária é um projeto pessoal e não é uma publicação oficial de nenhuma igreja ou denominação.</p>
 '''
