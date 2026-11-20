@@ -8,7 +8,7 @@ import html, pathlib, re
 # O projeto Flutter e a fonte da politica. Primeiro caminho: a copia do Mac,
 # que e a fonte canonica. O segundo so existia no ambiente antigo.
 PROJETO = next((c for c in (
-    pathlib.Path.home() / 'Downloads/Chama_Diaria_iPhone/chama_diaria',
+    pathlib.Path.home() / 'Downloads/Chama_Diaria/app/chama_diaria',
     pathlib.Path('/home/claude/dev/chama_diaria'),
 ) if (c / 'lib/pages/privacy_page.dart').is_file()), pathlib.Path('.'))
 SAIDA = pathlib.Path(__file__).resolve().parent
